@@ -290,6 +290,16 @@ open class SVGAImageView @JvmOverloads constructor(
         return super.onTouchEvent(event)
     }
 
+    /**
+     * 开始动画
+     * 修复RecyclerView小范围拖动后从不可见到可见后动画不动的问题
+     * @author panda
+     */
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        startAnimation()
+    }
+
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         stopAnimation(clearsAfterDetached)
